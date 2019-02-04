@@ -8,16 +8,19 @@
 require_once __DIR__ . '/raz-lib.php';
 require_once __DIR__ . '/dev-lib.php';
 
-$apiWsdl = 'https://www.shopjuniorgolf.com/api/?wsdl';
+$apiWsdl = 'http://shopjuniorgolf.com/api/soap/?wsdl';
+
 $apiUser = 'devtest';
-$apiKey = getenv('RAZOYO_TEST_KEY');
+$apiKey = 'ku%64TeYMo5mAIFj8e';
 
 $formatKey = 'csv'; // csv, xml, or json
-
 // Connect to SOAP API using PHP's SoapClient class
 // Feel free to create your own classes to organize code
-$soap = new SoapClient($apiWsdl);
+$client = new SoapClient($apiWsdl);
 // ...
+print_r($client);
+echo $apiUser;
+$session = $client->login($apiUser, $apiKey);
 
 // You will need to create a FormatFactory.
 $factory = new FormatFactory(); 
